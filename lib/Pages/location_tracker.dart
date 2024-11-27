@@ -6,6 +6,7 @@ import 'package:location/location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_application_1/Pages/getstarted_page.dart';
+import 'package:flutter_application_1/Pages/addrobot_page.dart';
 
 //-------------------------------------------
 class _ExpandableMenu extends StatefulWidget {
@@ -112,11 +113,10 @@ class _TrackBusState extends State<TrackBus> {
         markers.removeLast();
         markers.add(
           Marker(
-            width: 80.0,
-            height: 80.0,
+            width: 29,
+            height: 42,
             point: newLatLng,
-            child: const Icon(Icons.bus_alert_rounded,
-                color: Colors.red, size: 40.0),
+            child: Image.asset('lib/icons/location_robot_signe.png'),
           ),
         );
         _getRoute(newLatLng);
@@ -375,15 +375,15 @@ class _TrackBusState extends State<TrackBus> {
                   child: Stack(
                     children: [
                       DraggableScrollableSheet(
-                        initialChildSize: 0.2,
+                        initialChildSize: 0.1,
                         minChildSize: 0.1,
                         maxChildSize: 0.9,
                         builder: (context, scrollController) {
                           return Container(
-                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.vertical(
+                              color: const Color.fromARGB(255, 238, 238, 237),
+                              borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(16)),
                               boxShadow: [
                                 BoxShadow(
@@ -398,10 +398,10 @@ class _TrackBusState extends State<TrackBus> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // Drag Handle
                                   Center(
                                     child: Container(
-                                      margin: EdgeInsets.symmetric(vertical: 8),
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 8),
                                       width: 40,
                                       height: 4,
                                       decoration: BoxDecoration(
@@ -410,23 +410,25 @@ class _TrackBusState extends State<TrackBus> {
                                       ),
                                     ),
                                   ),
-                                  // Search Bar
+
                                   TextField(
                                     decoration: InputDecoration(
                                       hintText: "Search Maps",
-                                      prefixIcon: Icon(Icons.search),
+                                      prefixIcon:
+                                          const Icon(Icons.search_rounded),
                                       border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(12),
                                         borderSide: BorderSide.none,
                                       ),
-                                      fillColor: Colors.grey[200],
+                                      fillColor: const Color.fromRGBO(
+                                          217, 217, 217, 1),
                                       filled: true,
                                     ),
                                   ),
                                   const SizedBox(height: 16),
 
                                   // Featured Item
-                                  _buildFeaturedItem(),
+                                  _buildFeaturedItem(context),
 
                                   const SizedBox(height: 16),
                                   Text(
@@ -437,7 +439,7 @@ class _TrackBusState extends State<TrackBus> {
                                       color: Colors.grey[700],
                                     ),
                                   ),
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
 
                                   // Other Items
                                   _buildOtherItem(
@@ -449,24 +451,19 @@ class _TrackBusState extends State<TrackBus> {
                                   _buildOtherItem(
                                       "Robot B", "972 m away, Manar"),
 
-                                  const SizedBox(height: 16),
-                                  // Add New Button
+                                  const SizedBox(height: 60),
+
                                   Center(
-                                    child: IconButton(
-                                      icon: const Icon(Icons.add_circle_outline),
-                                      onPressed: () {
-                                        // Handle add action
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        print('help');
                                       },
-                                      color: Colors.grey,
-                                      iconSize: 32,
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Text(
-                                      "Help",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey[600],
+                                      child: const Text(
+                                        "Help",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -484,9 +481,9 @@ class _TrackBusState extends State<TrackBus> {
 
                 if (totalDistance != null && totalDuration != null)
                   Positioned(
-                    bottom: 170,
-                    left: 10,
-                    right: 10,
+                    top: 40,
+                    left: 70,
+                    right: 70,
                     child: Container(
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
@@ -505,11 +502,11 @@ class _TrackBusState extends State<TrackBus> {
                         children: [
                           Text(
                             'Distance: ${totalDistance!.toStringAsFixed(2)} KM',
-                            style: const TextStyle(fontSize: 16.0),
+                            style: const TextStyle(fontSize: 12.0),
                           ),
                           Text(
                             'Estimated time: ${totalDuration!.toStringAsFixed(2)} minutes',
-                            style: const TextStyle(fontSize: 16.0),
+                            style: const TextStyle(fontSize: 12.0),
                           ),
                         ],
                       ),
@@ -532,7 +529,7 @@ class _TrackBusState extends State<TrackBus> {
                             );
                           }
                         },
-                        mini: true, 
+                        mini: true,
                         child: const Icon(Icons.my_location),
                       ),
                     ],
@@ -562,22 +559,29 @@ class _TrackBusState extends State<TrackBus> {
   }
 }
 
-Widget _buildFeaturedItem() {
+Widget _buildFeaturedItem(BuildContext context) {
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     child: ListTile(
       leading: const CircleAvatar(
         backgroundColor: Colors.green,
-        child: Icon(Icons.android, color: Colors.white),
+        child: Icon(Icons.adb_rounded, color: Colors.white),
       ),
-      title: const Text("Add a Robot",
-      style: TextStyle(
-        fontSize: 17,
-      ),),
+      title: const Text(
+        "Add a Robot",
+        style: TextStyle(
+          fontSize: 17,
+        ),
+      ),
       trailing: IconButton(
         icon: const Icon(Icons.add, color: Colors.green),
         onPressed: () {
-          // Handle add action
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const AddrobotPage(),
+            ),
+          );
         },
       ),
     ),
@@ -586,7 +590,7 @@ Widget _buildFeaturedItem() {
 
 Widget _buildOtherItem(String title, String subtitle) {
   return ListTile(
-    leading: Icon(Icons.search, color: Colors.grey),
+    leading: const Icon(Icons.search, color: Colors.grey),
     title: Text(title),
     subtitle: Text(subtitle),
     onTap: () {
