@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/register_page.dart';
+import 'package:flutter_application_1/Pages/forgotpassword_page.dart';
 import 'package:flutter_application_1/componement/Text_field.dart';
+import 'package:flutter_application_1/Pages/location_tracker.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -105,7 +107,13 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            print("Forgot Password clicked");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const ForgotPasswordPage(),
+                                ),
+                              );
+
                           },
                           child: const Text(
                             'Forgot Password?',
@@ -121,13 +129,16 @@ class _LoginPageState extends State<LoginPage> {
                     Center(
                       child: GestureDetector(
                         onTap: () {
-                          print("Sign In button pressed");
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const TrackBus()),
+                          );
                         },
                         child: Container(
                           height: 50,
                           width: 50,
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 71, 212, 92),
+                          decoration: const BoxDecoration(
+                            color:  Color.fromARGB(255, 71, 212, 92),
                             shape: BoxShape.circle,
                           ),
                           child: const Icon(

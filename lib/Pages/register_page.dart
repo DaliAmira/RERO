@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/login_page.dart';
 import 'package:flutter_application_1/componement/Text_field.dart';
+import 'package:flutter_application_1/Pages/welcome_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -98,7 +99,10 @@ class _RegisterPageState extends State<RegisterPage> {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    print("Sign In button pressed");
+                    Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const WelcomePage()),
+                );;
                   },
                   child: Container(
                     height: 50,
@@ -115,8 +119,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              Center(
-                child: const Text(
+              const Center(
+                child: Text(
                   "OR",
                   style: TextStyle(
                     color: Color.fromARGB(255, 86, 85, 85),
