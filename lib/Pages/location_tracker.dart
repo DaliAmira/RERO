@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_application_1/Pages/getstarted_page.dart';
 import 'package:flutter_application_1/Pages/addrobot_page.dart';
+import 'package:flutter_application_1/Pages/Request_page.dart';
 
 //-------------------------------------------
 class _ExpandableMenu extends StatefulWidget {
@@ -28,26 +29,26 @@ class _ExpandableMenu extends StatefulWidget {
 class _ExpandableMenuState extends State<_ExpandableMenu> {
   bool _isExpanded = false;
 
-  Widget _buildListTile(String title, String subtitle) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundColor: Colors.grey[200],
-        child: Icon(Icons.search, color: Colors.blue),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-      ),
-      subtitle: Text(
-        subtitle,
-        style: TextStyle(color: Colors.grey[600], fontSize: 12),
-      ),
-      trailing: Icon(Icons.add_circle_outline, color: Colors.green),
-      onTap: () {
-        // Handle tap action
-      },
-    );
-  }
+  // Widget _buildListTile(String title, String subtitle) {
+  //   return ListTile(
+  //     leading: CircleAvatar(
+  //       backgroundColor: Colors.grey[200],
+  //       child: Icon(Icons.search, color: Colors.blue),
+  //     ),
+  //     title: Text(
+  //       title,
+  //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+  //     ),
+  //     subtitle: Text(
+  //       subtitle,
+  //       style: TextStyle(color: Colors.grey[600], fontSize: 12),
+  //     ),
+  //     trailing: Icon(Icons.add_circle_outline, color: Colors.green),
+  //     onTap: () {
+  //       // Handle tap action
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -282,6 +283,23 @@ class _TrackBusState extends State<TrackBus> {
                 ),
               ],
             ),
+            ListTile(
+              leading:
+                  const Icon(Icons.bookmark_add_rounded, color: Colors.black87),
+              title: const Text(
+                'Request for Autonomous Robot',
+                style: TextStyle(color: Colors.black87),
+                textAlign: TextAlign.center,
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const RequestPage(),
+                  ),
+                );
+              },
+            ),
             // User Profile Section with Settings and Sign Out
             _ExpandableMenu(
               icon: Icons.person,
@@ -512,6 +530,30 @@ class _TrackBusState extends State<TrackBus> {
                       ),
                     ),
                   ),
+                //--------------------------------------------
+                Positioned(
+                  top: 90,
+                  right: 20,
+                  bottom: 50,
+                  child: Column(
+                    children: [
+                      FloatingActionButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RequestPage(),
+                            ),
+                          );
+                        },
+                        mini: true,
+                        child: const Icon(Icons.bookmark_add_rounded),
+                      ),
+                    ],
+                  ),
+                ),
+
+                //---------------------------------
 
                 Positioned(
                   top: 40,

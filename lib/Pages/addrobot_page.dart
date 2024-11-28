@@ -64,19 +64,35 @@ class AddrobotPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 50),
+                      Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text(
+                            'Continue',
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       const Center(
                         child: Text(
                           "OR",
                           style: TextStyle(
                             fontFamily: 'Poppins',
-                            fontSize: 25.0, // Font size for text
-                            fontWeight: FontWeight.bold,
+                            fontSize: 12, // Font size for text
+                            fontWeight: FontWeight.w400,
                             color: Colors.white, // Text color
                           ),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      const SizedBox(height: 50),
+                      const SizedBox(height: 20),
                       Center(
                         child: GestureDetector(
                           onTap: () {
@@ -90,11 +106,10 @@ class AddrobotPage extends StatelessWidget {
                           child: const Text(
                             "Scan The QR code",
                             style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 15.0, // Font size for text
-                              fontWeight: FontWeight.w300,
-                              color: Colors.white, // Text color
-                            ),
+                                fontFamily: 'Poppins',
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold),
                             textAlign: TextAlign.center,
                           ),
                         ),
