@@ -259,11 +259,15 @@ class _TrackBusState extends State<TrackBus> {
             _ExpandableMenu(
               icon: Icons.dashboard,
               title: "Dashboard",
+              
               children: [
                 ListTile(
                   title: const Text(
                     'Recent Activity',
-                    style: TextStyle(color: Colors.black54),
+                    
+                    
+                    style: TextStyle(color: Colors.black54,
+                    fontSize: 14),
                   ),
                   onTap: () {},
                 ),
@@ -288,8 +292,10 @@ class _TrackBusState extends State<TrackBus> {
                   const Icon(Icons.bookmark_add_rounded, color: Colors.black87),
               title: const Text(
                 'Request for Autonomous Robot',
-                style: TextStyle(color: Colors.black87),
+                style: TextStyle(color: Colors.black87,
+                 ),
                 textAlign: TextAlign.center,
+                
               ),
               onTap: () {
                 Navigator.push(

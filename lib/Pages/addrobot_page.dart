@@ -103,14 +103,24 @@ class AddrobotPage extends StatelessWidget {
                                   builder: (context) => const TrackBus()),
                             );
                           },
-                          child: const Text(
-                            "Scan The QR code",
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 23,
-                                fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
+                          child: const Padding(
+                            padding: const EdgeInsets.only(left: 50,),
+                            child: Row(
+                              children: [
+                                 Icon(Icons.qr_code_scanner_rounded,color: Colors.white,
+                                 size: 40,),
+                                 const SizedBox(width: 20,),
+                                 Text(
+                                  "Scan The QR code",
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
