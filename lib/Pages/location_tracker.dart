@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Pages/Robotdetails_page.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
@@ -28,28 +29,6 @@ class _ExpandableMenu extends StatefulWidget {
 
 class _ExpandableMenuState extends State<_ExpandableMenu> {
   bool _isExpanded = false;
-
-  // Widget _buildListTile(String title, String subtitle) {
-  //   return ListTile(
-  //     leading: CircleAvatar(
-  //       backgroundColor: Colors.grey[200],
-  //       child: Icon(Icons.search, color: Colors.blue),
-  //     ),
-  //     title: Text(
-  //       title,
-  //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-  //     ),
-  //     subtitle: Text(
-  //       subtitle,
-  //       style: TextStyle(color: Colors.grey[600], fontSize: 12),
-  //     ),
-  //     trailing: Icon(Icons.add_circle_outline, color: Colors.green),
-  //     onTap: () {
-  //       // Handle tap action
-  //     },
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -106,24 +85,37 @@ class _TrackBusState extends State<TrackBus> {
   }
 
   void _updateRedMarkerPosition() {
-    if (currentLocation != null) {
-      setState(() {
-        final LatLng lastPosition = markers.last.point;
-        final newLatLng = LatLng(
-            lastPosition.latitude - 0.001, lastPosition.longitude - 0.001);
-        markers.removeLast();
-        markers.add(
-          Marker(
-            width: 29,
-            height: 42,
-            point: newLatLng,
+  if (currentLocation != null) {
+    setState(() {
+      final LatLng lastPosition = markers.last.point;
+      final newLatLng = LatLng(
+          lastPosition.latitude - 0.001, lastPosition.longitude - 0.001);
+      markers.removeLast();
+      markers.add(
+        Marker(
+          width: 29,
+          height: 42,
+          point: newLatLng,
+          child: GestureDetector(
+            onTap: () {
+              // Navigate to the RobotDetailsPage when the marker is clicked
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => RobotDetailsPage(),
+                ),
+              );
+            },
             child: Image.asset('lib/icons/location_robot_signe.png'),
           ),
-        );
-        _getRoute(newLatLng);
-      });
-    }
+        ),
+      );
+      _getRoute(newLatLng);
+    });
   }
+}
+
+
 
   @override
   void initState() {

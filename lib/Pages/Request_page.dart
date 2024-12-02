@@ -38,7 +38,7 @@ class RequestPage extends StatelessWidget {
                     width: 350,
                     height: 763,
                     decoration: BoxDecoration(
-                      color: Color.fromRGBO(226, 255, 224, 0.573),
+                      color: const Color.fromRGBO(226, 255, 224, 0.573),
                       borderRadius: const BorderRadius.vertical(
                           top: Radius.circular(16),
                           bottom: Radius.circular(16)),
@@ -228,7 +228,7 @@ class RequestPage extends StatelessWidget {
                           child: ElevatedButton.icon(
                             onPressed: () {
                               // Action when button is pressed
-                              print("Pick Location button pressed");
+                              // print("Pick Location button pressed");
                             },
                             icon: const Icon(Icons.location_on,
                                 color: Colors.white),
@@ -237,7 +237,7 @@ class RequestPage extends StatelessWidget {
                               style: TextStyle(color: Colors.white),
                             ),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 3, 54, 4),
+                              backgroundColor: const Color.fromARGB(255, 3, 54, 4),
                               // Button color
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
